@@ -1,0 +1,147 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--强制使用360急速模式-->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <meta name="keywords" content="*****" />
+    <meta name="description" content="*******" />
+    <title>高春林--护士执业证书--医政信息展示</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/Content/icos/nurse.ico" mce_href="/Content/icos/nurse.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://comres.cndocsys.cn/licensedisp/css/nurse-Computer-v2.css" />
+    <style>
+        .footer {
+            bottom:100px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false" ondragstart="return false;" style="background-color:#fff">
+    <div class="wrap_qn">
+        <div class="title">
+            
+            <div>护士执业证书</div>
+        </div>
+                <div class="main">
+                    <div class="block">
+                        <img id="photo" src="" class="head" style="display:none" />
+                        <div class="li">
+                            <span class="key">姓名：</span>
+                            <span class="value" style="font-size: 19px;">高春林</span>
+                        </div>
+                        <div class="li">
+                            <span class="key">性别：</span>
+                            <span class="value">女</span>
+                        </div>
+                        <div class="li">
+                            <span class="key">出生年月：</span>
+                            <span class="value">1971年02月</span>
+                        </div>
+                    </div>
+                    <div class="flexBlock">
+                        <div class="BWrapBlock">
+                                    <div class="Bli">
+                                        <span class="key" style="width: 17%;">执业地点:</span>
+                                                <span class="value" style="width: 60%;">武汉市第三医院</span>
+
+                                    </div>
+
+
+                            <div class="Bli">
+                                <span class="key" style="width: 17%;">技术职称:</span>
+                                <span class="value" style="width: 60%;">护士</span>
+                            </div>
+                            <div class="Bli">
+                                <span class="key" style="width: 28%;">护士执业证书编号:</span>
+                                <span class="value" style="width: 60%;">201095000553</span>
+                            </div>
+                            <div class="Bli">
+                                <span class="key" style="width: 23%;">注册有效期至:</span>
+                                <span class="value" style="width: 60%;">2025年11月15日</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flexBlock">
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="newEr">
+                        <div id="newErCode"></div>
+                    </div>
+                    <div class="Ntip">
+                        <div class="Bli" style="padding-top:30px;">
+                            <div class="fkey">签发机关 &nbsp; &nbsp; &nbsp;</div>
+                            <span class="fvalue">湖北省卫生厅</span>
+                        </div>
+                        <div class="Bli">
+                            <span class="fkey">签发日期 &nbsp; &nbsp; &nbsp;</span>
+                            <span class="fvalue">2020年06月08日</span>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+
+
+
+            <script src="https://cdn.staticfile.org/jquery/2.2.3/jquery.min.js"></script>
+            <script src="https://cdn.staticfile.org/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        var NG = '6dd3d508-ac61-4374-b310-fcb161b1a922';
+        $(function () {
+            if (NG !== '') {
+                loadCurrPhotoTianCloud();
+                //
+                getQr();
+            }
+        });
+        //get cloud photo
+        function loadCurrPhotoTianCloud() {
+            $.post("/License/GetNursePhotoUri", { ni: NG,jstk:"637991755569937630",jssn:"EBFFAD28DE35420A1A99FCFE8FE7F391", t: new Date().valueOf() }, function (data) {
+                if (data.result) {
+                    $("#photo").attr("src", data.message);
+                    $("#photo").attr("onerror", "phoError(this)");
+                }
+                else {
+                    $("#photo").attr("src", "https://comres.cndocsys.cn/no_photo2.jpg");
+                }
+                $("#photo").show();
+            });
+        }
+        function imgErrorEvent(dom) {
+            dom.src = "https://comres.cndocsys.cn/no_photo2.jpg";
+            dom.onerror = null;
+        }
+        //
+        function getQr() {
+            new QRCode("newErCode", {
+                text: "https://license.wsb003.cn/license/nurse?encry=B4hVdl2KeYIl0q2NgHM/0DLV2FstGbpjPDtEsvqyD2MxdcxUafHvrwcTOZ74okvj",
+                width: 150,
+                height: 150,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>
+
